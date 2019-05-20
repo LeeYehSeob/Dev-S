@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 <c:set var="path" value="${pageContext.request.contextPath}"></c:set>
+<c:set var="Name" value="${sessionScope.user_name}"></c:set>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -57,15 +58,21 @@
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-								aria-haspopup="true" aria-expanded="false">접속하기<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">로그인</a></li>
-								<li><a href="#">회원가입</a></li>
-							</ul>
-						</li>
-						<li><a href="#">마이페이지<span class="sr-only"></span></a></li>
+						<c:choose>
+							<c:when test="${Name != null}">
+								<li><a href="#">마이페이지<span class="sr-only"></span></a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+										aria-haspopup="true" aria-expanded="false">접속하기<span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a data-target="#modal" data-toggle="modal">로그인</a></li>
+										<li><a href="#">회원가입</a></li>
+									</ul>
+								</li>
+							</c:otherwise>
+						</c:choose>
 					</ul>
 				</div>
 			</div>
@@ -124,6 +131,26 @@
 				</div>
 			</div>
 		</footer>
+		<div class="row">
+			<div class="modal" id="modal" tabindex="-1">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							로그인
+							<button class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<div class="modal-body" style="text-align: center;">
+							<form action="${path}/#" method="post">
+								<input type="text" name="user_id" placeholder="ID"><br>
+								<input type="password" name="user_pw" placeholder="PW"><br>
+								<button type="submit">로그인</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 		<script src="${path}/resources/js/bootstrap.js"></script>
 	</body>
