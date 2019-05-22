@@ -67,8 +67,8 @@
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
 										aria-haspopup="true" aria-expanded="false">접속하기<span class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a data-target="#modal" data-toggle="modal">로그인</a></li>
-										<li><a href="#">회원가입</a></li>
+										<li><a data-target="#login-modal" data-toggle="modal">로그인</a></li>
+										<li><a data-target="#signUp-modal" data-toggle="modal">회원가입</a></li>
 									</ul>
 								</li>
 							</c:otherwise>
@@ -99,12 +99,18 @@
 				<div class="col-sm-4">
 					<h1>최신글보기</h1>
 					<p><hr>
-						<a href="#">ㅁㅁ</a><hr>
-						<a href="#">ㅁㅁ</a><hr>
-						<a href="#">ㅁㅁ</a><hr>
-						<a href="#">ㅁㅁ</a><hr>
+						<a href="#">${pageScope.contentTitle}</a><hr>
+						<a href="#">${pageScope.contentTitle}</a><hr>
+						<a href="#">${pageScope.contentTitle}</a><hr>
+						<a href="#">${pageScope.contentTitle}</a><hr>
+						<a href="#">${pageScope.contentTitle}</a><hr>
 					</p>
 				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="">
+				
 			</div>
 		</div>
 
@@ -122,7 +128,7 @@
 						<p>
 							본명 : 이예섭 (YehSeob Lee) <br>
 							거주지 : 경기도 용인시 처인구 <br>
-							근무지 : 없음
+							근무지 : 자택
 						</p>
 					</div>
 
@@ -132,7 +138,7 @@
 			</div>
 		</footer>
 		<div class="row">
-			<div class="modal" id="modal" tabindex="-1">
+			<div class="modal" id="login-modal" tabindex="-1">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -144,6 +150,49 @@
 								<input type="text" name="user_id" placeholder="ID"><br>
 								<input type="password" name="user_pw" placeholder="PW"><br>
 								<button type="submit">로그인</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal" id="signUp-modal" tabindex="-1">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							회원가입
+							<button class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<div class="modal-body">
+							<form action="${path}/#" method="post">
+								<table style="margin-left: auto; margin-right: auto;">
+									<tr>
+										<td>
+											ID : 
+										</td>
+										<td>
+											<input type="text" name="user_id">
+										</td>
+									</tr>
+									<tr>
+										<td>
+											Password : 
+										</td>
+										<td>
+											<input type="password" name="user_password">
+										</td>
+									</tr>
+									<tr>
+										<td>
+											Email : 
+										</td>
+										<td>
+											<input type="text" name="user_email">
+										</td>
+									</tr>
+								</table>
+								
+								
 							</form>
 						</div>
 					</div>
